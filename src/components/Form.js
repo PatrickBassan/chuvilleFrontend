@@ -23,7 +23,7 @@ const Form = ({ getForecasts, onEdit, setOnEdit }) => {
 
     const getCepOptions = async () => {
         try {
-            const res = await axios.get("http://localhost:8800/regions")
+            const res = await axios.get("https://chuville-d7e31443d448.herokuapp.com/regions")
             let list = res.data.sort((a, b) => (a.cdregion > b.cdregion ? 1 : -1))
             list = list.map(a => ({ value: a.cdregion, label: a.cepregion }))
             setCepOptions(list)
@@ -69,7 +69,7 @@ const Form = ({ getForecasts, onEdit, setOnEdit }) => {
         }
 
         if (onEdit) {
-            await axios.put("http://localhost:8800/forecast", {
+            await axios.put("https://chuville-d7e31443d448.herokuapp.com/forecast", {
                 cdregion: forecast.cepregion.value,
                 probability: forecast.probability.value,
                 period: forecast.period.value,
@@ -79,7 +79,7 @@ const Form = ({ getForecasts, onEdit, setOnEdit }) => {
             .then(({ data }) => toast.success(data))
             .catch(({ data }) => toast.error(data))
         } else {
-            await axios.post("http://localhost:8800/forecast", {
+            await axios.post("https://chuville-d7e31443d448.herokuapp.com/forecast", {
                     cdregion: forecast.cepregion.value,
                     probability: forecast.probability.value,
                     period: forecast.period.value,

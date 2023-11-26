@@ -26,7 +26,7 @@ function ConsultPage() {
 
     const getCepOptions = async () => {
         try {
-            const res = await axios.get("http://localhost:8800/regions")
+            const res = await axios.get("https://chuville-d7e31443d448.herokuapp.com/regions")
             let list = res.data.sort((a, b) => (a.cdregion > b.cdregion ? 1 : -1))
             list = list.map(a => ({ value: a.cdregion, label: a.cepregion }))
             setCepOptions(list)
@@ -59,7 +59,7 @@ function ConsultPage() {
         }
 
         try {
-            const res = await axios.get("http://localhost:8800/forecast", {
+            const res = await axios.get("https://chuville-d7e31443d448.herokuapp.com/forecast", {
                 params: {
                     cdregion,
                     time,

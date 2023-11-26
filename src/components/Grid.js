@@ -16,7 +16,7 @@ const Grid = ({ forecasts, setForecasts, setOnEdit }) => {
     }
 
     const handleDelete = async (cd) => {
-        await axios.delete("http://localhost:8800/forecast", {
+        await axios.delete("https://chuville-d7e31443d448.herokuapp.com/forecast", {
             params: { cd }
         })
         .then(({ data }) => {

@@ -16,7 +16,7 @@ function App() {
         let date = new Date()
         let dtstart = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate()
         try {
-            const res = await axios.get("http://localhost:8800/forecast/forecasts", {params: {dtstart}})
+            const res = await axios.get("https://chuville-d7e31443d448.herokuapp.com/forecast/forecasts", {params: {dtstart}})
             setForecasts(res.data.sort((a, b) => (a.nome > b.nome ? 1 : -1)))
         } catch (error) {
             toast.error(error)
